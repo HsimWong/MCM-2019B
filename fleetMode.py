@@ -16,12 +16,7 @@ med_type = [0, 2, 0, 0, 1, 0, 1, 0, 0, 1, 2, 2, 0]
 
 print("Generating distribution list")
 drug_distr_list = drug_distr.get_list_of_drug_distribution_to_each_supply_station()
-# drug_distr_list = [
-# 					[[0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,0,0,0,0,0,0,0,0,1], [0,0,0,0,0,0,0,0,0,0,0,0,0]],
-# 					[[1,1,1,1,0,0,0,1,1,1,1,1,1], [0,0,0,0,0,0,0,0,0,0,0,0,0], [0,0,0,0,1,1,1,0,0,0,0,0,0]],
-# 					[[1,1,0,1,0,0,0,1,1,1,1,1,0], [0,0,1,0,0,0,0,0,0,0,0,0,1], [0,0,0,0,1,1,1,0,0,0,0,0,0]],
-# 					[[0,0,1,1,0,0,0,1,1,1,1,1,0], [1,1,0,0,0,0,0,0,0,0,0,0,1], [0,0,0,0,1,1,1,0,0,0,0,0,0]]
-# 				  ]
+# drug_distr_list = [[[1,1,1,1,1,0,0,0,0,0,0,0,0],[0,0,0,0,0,1,1,1,1,1,1,1,0],[0,0,0,0,0,0,0,0,0,0,0,0,1]]]
 '''
 Considering the worst situation where a group
 of drones are going to deliver packages to
@@ -137,8 +132,7 @@ def main():
 	min_occasion = []
 	i = 0
 	for distri in drug_distr_list:
-		if i % 100 == 0:
-			print(i, end = ",")
+		print(i, end = ",")
 		i += 1
 
 		get_cost_of_this_distri = get_cost_of_drug_distri(distri)

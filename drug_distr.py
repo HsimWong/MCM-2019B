@@ -59,23 +59,42 @@ med_belong = [0,0,1,1,1,2,2,3,3,3,3,3,4]
 
 med_deliverd = [1,1,1,1,1,1,1,1,1,1,1,1,1]
 
+
+
+def nothit(bin_arr):
+	if bin_arr[2] == 1 and bin_arr[3] == 0:
+		return False
+	if bin_arr[7] == 1 and bin_arr[8] == 0:
+		return False
+	if bin_arr[10] == 1 and bin_arr[11] == 0:
+		return False
+	return True
+
 def get_list_of_drug_distribution_to_each_supply_station():
+
+
+
 	bin_arr = []
 	xx = 0
 	bin_arr.append([med_deliverd, reverse_arr(med_deliverd), reverse_arr(med_deliverd)])
 	for bin1 in range(2 ** (len(med_deliverd) - 1)):
 		xx += 1
 		bin1_arr = dec2bin_arr(bin1)
-		if xx % 300 == 0:
-			print(xx, end = ',')
-			print(bin1_arr)
-		for bin2 in range(2 ** (len(med_deliverd) - 1)):
-			bin2_arr = dec2bin_arr(bin2)
-			if (bin_2_ok(bin1_arr, bin2_arr) >= 1):
-				bin3_arr = getbin3(bin1_arr, bin2_arr)
-				bin_arr.append([bin1_arr, bin2_arr, bin3_arr])
-	return bin_arr
+		# if xx % 300 == 0:
+		# 	print(xx, end = ',')
+		# 	print(bin1_arr)
+
+		if nothit(bin1_arr):
+			for bin2 in range(2 ** (len(med_deliverd) - 1)):
+				bin2_arr = dec2bin_arr(bin2)
+				if nothit(bin2_arr):
+					if (bin_2_ok(bin1_arr, bin2_arr) >= 1):
+						bin3_arr = getbin3(bin1_arr, bin2_arr)
+						if nothit(bin3_arr):
+							bin_arr.append([bin1_arr, bin2_arr, bin3_arr])
 	print(len(bin_arr))
+	return bin_arr
+	
 
 if __name__ == '__main__':
 	get_list_of_drug_distribution_to_each_supply_station()
