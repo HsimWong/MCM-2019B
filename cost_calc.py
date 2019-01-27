@@ -29,7 +29,7 @@ def get_cost_contrib(fleet, hospital_index, iter_position):
 	for i in range(len(fleet)):
 		drone_index = fleet[i]
 		distance = dist_from(iter_position, hospital_index)
-		cost.append(distance / (drone_array[drone_index][3] * drone_array[drone_index][4] * drain_ratio / 60))
+		cost.append(distance  / (drone_array[drone_index][3]))
 	
 	ret = 0
 	if len(cost) > 0:
@@ -38,7 +38,7 @@ def get_cost_contrib(fleet, hospital_index, iter_position):
 
 #[[], [7], [], [1], [6]]
 def get_cost_single_supply(fleetModeGroup):
-	grid_dens = 10
+	grid_dens = 2
 	x_range = np.arange(65, 180, grid_dens)
 	y_range = np.arange(20, 82, grid_dens)
 

@@ -74,7 +74,7 @@ def get_list_of_drug_distribution_to_each_supply_station():
 			if (bin_2_ok(bin1_arr, bin2_arr) >= 1):
 				bin3_arr = getbin3(bin1_arr, bin2_arr)
 				bin_arr.append([bin1_arr, bin2_arr, bin3_arr])
-
+	return bin_arr
 	print(len(bin_arr))
 
 if __name__ == '__main__':
