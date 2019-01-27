@@ -129,14 +129,24 @@ def get_cost_of_drug_distri(distribution):
 		if supp_cost_value > maximum_cost_contrib:
 			maximum_cost_contrib = supp_cost_value
 		cost_contrib_list.append(cost_contrib)
-	return maximum_cost_contrib, fleet_modes, cost_contrib_list
+	return [maximum_cost_contrib, fleet_modes, cost_contrib_list]
 
 
 def main():
+	min_cost = 100
+	min_occasion = []
+	i = 0
 	for distri in drug_distr_list:
-		print("s")
+		if i % 100 == 0:
+			print(i, end = ",")
+		i += 1
+
 		get_cost_of_this_distri = get_cost_of_drug_distri(distri)
-		print(get_cost_of_this_distri)
+		if min_cost > get_cost_of_this_distri[0]:
+			min_cost = get_cost_of_this_distri[0]
+			min_occasion = get_cost_of_this_distri
+
+	print(min_occasion)
 
 if __name__ == '__main__':
 	main()
